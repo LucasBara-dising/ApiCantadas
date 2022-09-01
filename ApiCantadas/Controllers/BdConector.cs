@@ -19,7 +19,7 @@ namespace ApiCantadas.Controllers
         //usuário de conexão do banco de dados
         static string userDB = "root";
         //senha de conexão do banco de dados
-        static string password = "PLMjy579";
+        static string password = "12345678";
 
         //string de conexão ao BD
         public static string strProvider = "server=" + host +
@@ -38,6 +38,9 @@ namespace ApiCantadas.Controllers
             conn2.Open();
 
         }
+
+        //------para cada ação criar um metodo no banco-------
+
         public List<Cantada> BuscaTodos()
         {
             //Fornece uma maneira de ler os dados do banco
@@ -60,6 +63,19 @@ namespace ApiCantadas.Controllers
             return cant;
 
         }
+
+
+        //insert
+        public void adicionaCantada(Cantada cantada)
+        {
+            String strQuery = "INSERT INTO tbCantada (txtCantada,catCantada) VALUES (" + cantada.TxtCantada + ","+ cantada.CatCantada + ");";
+
+            MySqlCommand cmd = new MySqlCommand(strQuery, conn2);
+            MySqlDataReader reader = cmd.ExecuteReader();
+        }
+
+
+
 
         public void Fechar()
         {

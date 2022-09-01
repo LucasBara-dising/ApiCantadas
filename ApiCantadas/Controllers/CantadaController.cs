@@ -38,6 +38,10 @@ namespace ApiCantadas.Controllers
         }
 
         //------------------não funcioa ainda-----------
+        // usar swegger
+
+
+        //importande colopocar parametros no BODY
         // POST: api/Cantada/addCantada
         [HttpPost]
         [ActionName("addCantada")]
@@ -48,6 +52,7 @@ namespace ApiCantadas.Controllers
                 return new HttpResponseMessage(HttpStatusCode.NotModified);
             }
             //manda adicionar o item 
+            BdConector db = new BdConector();
             cantada.AddRange(itens);
             //retorna mensagem de sucesso
             var response = new HttpResponseMessage(HttpStatusCode.Created);
