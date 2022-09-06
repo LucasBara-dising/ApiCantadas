@@ -19,7 +19,7 @@ namespace ApiCantadas.Controllers
         //usuário de conexão do banco de dados
         static string userDB = "root";
         //senha de conexão do banco de dados
-        static string password = "12345678";
+        static string password = "PLMjy579";
 
         //string de conexão ao BD
         public static string strProvider = "server=" + host +
@@ -91,8 +91,6 @@ namespace ApiCantadas.Controllers
             cmd.Parameters.AddWithValue("@id_cant", idCant);
             cmd.ExecuteNonQuery();
         }
-
-
 
         public void Fechar()
         {

@@ -9,7 +9,5 @@ INSERT INTO tbCantada (txtCantada,catCantada) VALUES ("Oi gata Que olhos Lindods
 INSERT INTO tbCantada (txtCantada,catCantada) VALUES ("Conquistou meu coração", "Crush");
 INSERT INTO tbCantada (txtCantada,catCantada) VALUES ("Amo teu abraço", "Fofo");
 				
-delete from tbCantada where   id_cant=5 ;   
-
           
 SELECT * FROM tbCantada;

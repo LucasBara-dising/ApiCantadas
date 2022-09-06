@@ -40,7 +40,7 @@ namespace ApiCantadas.Controllers
         // usar swegger
 
 
-        //importande colopocar parametros no BODY
+        //importande colocar parametros no BODY
         // POST: api/Cantada/addCantada
         [HttpPost]
         [ActionName("addCantada")]
@@ -50,7 +50,6 @@ namespace ApiCantadas.Controllers
             {
                 return new HttpResponseMessage(HttpStatusCode.NotModified);
             }
-
 
             //manda adicionar o item 
             //recebe uma lista, faz um laço para recbe um valor de cada vez
@@ -69,9 +68,10 @@ namespace ApiCantadas.Controllers
         }
 
         //update
-        // PUT: api/Livro/5
+        // PUT: api/Cantada/atualiza/{id}
+        //Obs:tem que passar id, txt e categoria no body
         [HttpPut]
-        [ActionName("updateItem")]
+        [ActionName("atualiza")]
         public HttpResponseMessage Put(int id, [FromBody] Cantada item)
         {
 
@@ -81,15 +81,8 @@ namespace ApiCantadas.Controllers
             }
 
             BdConector db = new BdConector();
-            foreach (var item in itens)
-            {
-                db.UpdateCantada(item);
-            }
-
-            //fecha banco
-            db.Fechar()
-            //int index = cantada.IndexOf((Cantada)cantada.Where((p) => p.IdCantada == id).FirstOrDefault());
-            //cantada[index] = item;
+            db.UpdateCantada(item);
+            db.Fechar();
 
             return new HttpResponseMessage(HttpStatusCode.Accepted);
         }
