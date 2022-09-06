@@ -74,6 +74,23 @@ namespace ApiCantadas.Controllers
             cmd.ExecuteNonQuery();
         }
 
+        //Update
+        public void UpdateCantada(Cantada cantada)
+        {
+            MySqlCommand cmd = new MySqlCommand("update tbCantada set txtCantada=@TxtCantada, catCantada=@CatCantada where id_cant=@idCant", conn2);
+            cmd.Parameters.AddWithValue("@TxtCantada", cantada.TxtCantada);
+            cmd.Parameters.AddWithValue("@CatCantada", cantada.CatCantada);
+            cmd.Parameters.AddWithValue("@idCant", cantada.IdCantada);
+            cmd.ExecuteNonQuery();
+        }
+
+        //delete
+        public void RemoveCantada(int idCant)
+        {
+            MySqlCommand cmd = new MySqlCommand("delete from tbCantada where  id_cant=@id_cant", conn2);
+            cmd.Parameters.AddWithValue("@id_cant", idCant);
+            cmd.ExecuteNonQuery();
+        }
 
 
 

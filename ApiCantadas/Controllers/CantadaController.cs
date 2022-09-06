@@ -80,20 +80,30 @@ namespace ApiCantadas.Controllers
                 return new HttpResponseMessage(HttpStatusCode.NotModified);
             }
 
-            int index = cantada.IndexOf((Cantada)cantada.Where((p) => p.IdCantada == id).FirstOrDefault());
-            cantada[index] = item;
+            BdConector db = new BdConector();
+            foreach (var item in itens)
+            {
+                db.UpdateCantada(item);
+            }
+
+            //fecha banco
+            db.Fechar()
+            //int index = cantada.IndexOf((Cantada)cantada.Where((p) => p.IdCantada == id).FirstOrDefault());
+            //cantada[index] = item;
 
             return new HttpResponseMessage(HttpStatusCode.Accepted);
         }
 
-
+        //Delete
+        //api/Cantada/delete?idCant={id}
         [HttpDelete]
         [ActionName("delete")]
-        public HttpResponseMessage Delete(int id)
+        public HttpResponseMessage Delete(int idCant)
         {
-            Cantada cant = (Cantada)cantada.Where((p) => p.IdCantada == id);
-            int index = cantada.IndexOf(cant);
-            cantada.RemoveAt(index);
+            BdConector db = new BdConector();
+            db.RemoveCantada(idCant);
+            db.Fechar();
+
             return new HttpResponseMessage(HttpStatusCode.OK);
         }
 

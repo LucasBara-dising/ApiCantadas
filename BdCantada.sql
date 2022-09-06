@@ -8,5 +8,8 @@ CREATE TABLE if not exists tbCantada(id_cant smallint  primary key AUTO_INCREMEN
 INSERT INTO tbCantada (txtCantada,catCantada) VALUES ("Oi gata Que olhos Lindods","Amor");
 INSERT INTO tbCantada (txtCantada,catCantada) VALUES ("Conquistou meu coração", "Crush");
 INSERT INTO tbCantada (txtCantada,catCantada) VALUES ("Amo teu abraço", "Fofo");
-					
+				
+delete from tbCantada where   id_cant=5 ;   
+
+          
 SELECT * FROM tbCantada;
