@@ -37,7 +37,6 @@ namespace ApiCantadas.Controllers
             }
         }
 
-        //------------------não funcioa ainda-----------
         // usar swegger
 
 
@@ -51,9 +50,19 @@ namespace ApiCantadas.Controllers
             {
                 return new HttpResponseMessage(HttpStatusCode.NotModified);
             }
+
+
             //manda adicionar o item 
+            //recebe uma lista, faz um laço para recbe um valor de cada vez
             BdConector db = new BdConector();
-            cantada.AddRange(itens);
+            foreach (var item in itens)
+            {
+                db.adicionaCantada(item);
+            }
+           
+            //fecha banco
+            db.Fechar();
+
             //retorna mensagem de sucesso
             var response = new HttpResponseMessage(HttpStatusCode.Created);
             return response;

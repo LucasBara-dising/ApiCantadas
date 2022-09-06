@@ -68,10 +68,10 @@ namespace ApiCantadas.Controllers
         //insert
         public void adicionaCantada(Cantada cantada)
         {
-            String strQuery = "INSERT INTO tbCantada (txtCantada,catCantada) VALUES (" + cantada.TxtCantada + ","+ cantada.CatCantada + ");";
-
-            MySqlCommand cmd = new MySqlCommand(strQuery, conn2);
-            MySqlDataReader reader = cmd.ExecuteReader();
+            MySqlCommand cmd = new MySqlCommand("INSERT INTO tbCantada (txtCantada,catCantada) VALUES (@TxtCantada , @CatCantada)", conn2);
+            cmd.Parameters.AddWithValue("@TxtCantada", cantada.TxtCantada);
+            cmd.Parameters.AddWithValue("@CatCantada", cantada.CatCantada);
+            cmd.ExecuteNonQuery();
         }
 
 
