@@ -13,7 +13,7 @@ Colocar a senha do seu Mysql em BdConector
 </li>
 
 <li>
-Para usar API é necessario usar feramentas como <a href="https://inspector.swagger.io/builder">Swegger</a>
+Para Vizualizar API é necessario usar feramentas como <a href="https://inspector.swagger.io/builder">Swegger</a>
 </li>
 </ol>
 
