@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  apicantadas:
+    image: ${DOCKER_REGISTRY-}apicantadasTeste
+    build:
+      context: .\ApiCantadasTeste
+      dockerfile: Dockerfile

@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -26,6 +27,27 @@ namespace ApiCantadas.Controllers
             {
                 BdConector db = new BdConector();
                 var cants = db.BuscaTodos();
+                db.Fechar();
+                return cants;
+            }
+            catch (Exception e)
+            {
+                //se der erado o banco retorna erro de desautorizado 
+                var resp = new HttpResponseMessage(HttpStatusCode.Unauthorized);
+                throw new HttpResponseException(resp);
+            }
+        }
+
+        // api/Cantada/MostraUma/1
+        [HttpGet]
+        [ActionName("MostraUma")]
+        public IEnumerable<Cantada> SelecionaUmaCantada(int idCanta)
+        {
+            //tenta conectar ao banco
+            try
+            {
+                BdConector db = new BdConector();
+                var cants = db.SelecionaUmaCantada(idCanta);
                 db.Fechar();
                 return cants;
             }

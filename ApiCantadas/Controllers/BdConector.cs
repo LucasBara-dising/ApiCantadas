@@ -64,6 +64,29 @@ namespace ApiCantadas.Controllers
 
         }
 
+        //Selecet umn
+        public List<Cantada> SelecionaUmaCantada(int idCanta)
+        {
+
+            MySqlCommand cmd = new MySqlCommand("SELECT * FROM tbCantada where id_cant=@id_cant", conn2);
+            cmd.Parameters.AddWithValue("@id_cant", idCanta);
+            MySqlDataReader reader=cmd.ExecuteReader();
+            List<Cantada> cant = new List<Cantada>();
+            while (reader.Read())
+            {
+                var TempCant = new Cantada()
+                {
+                    IdCantada = int.Parse(reader["id_cant"].ToString()),
+                    TxtCantada= reader["txtCantada"].ToString(),
+                    CatCantada= reader["catCantada"].ToString(),
+                   };
+
+                cant.Add(TempCant);
+            }
+            reader.Close();
+            return cant;
+        }
+
 
         //insert
         public void adicionaCantada(Cantada cantada)
